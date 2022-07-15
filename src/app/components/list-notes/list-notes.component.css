@@ -89,8 +89,9 @@
   font-size: 25px;
 }
 
-.note-header a,
-.note-footer a {
+
+.note-footer a,
+.note-header a  {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,10 +101,13 @@
   background-color: var(--bg);
   color: var(--yellow);
   cursor: pointer;
+  text-decoration: none;
+  color: #f1f1f1;
 }
 
+
 .note-footer a {
-  color: #c81c1c;
+  color: rgb(200, 28, 28);
 }
 
 .note-header a:hover,
@@ -130,7 +134,7 @@
   text-align: center;
   height: 25px;
   border-radius: 20px;
-  background-color: var(--yellow);
+  border: 1px solid ;
 }
 
 .note:hover {
@@ -139,7 +143,28 @@
 
 }
 .empty-text{
+  font-size: 40px;
   margin-top: 2rem;
   text-align: center;
   color: #f1f1f1;
+}
+.empty-image{
+  margin:  0 auto;
+  width: 50%;
+  height: 60vh;
+  margin-top: -3rem;
+}
+
+.Alta-prioridad{
+  background-color:#ee6055;
+  color: #111;
+}
+.Media-prioridad{
+ background-color: #ffd97d;
+ color: #111;
+}
+.Baja-prioridad{
+  background-color: #60d394;
+ color: #111;
+ 
 }

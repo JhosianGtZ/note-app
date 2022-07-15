@@ -52,7 +52,7 @@
 }
 
 
-.form-note input {
+.form-note input, .form-note select {
   font-family: 'Montserrat';
   font-weight: 600;
   height: 35px;
@@ -98,6 +98,9 @@
 .btn-back:hover {
   color: #f1f1f1;
   background-color: #2d6a7c;
+}
+.form-title{
+  color: #f1f1f1;
 }
 
 .warning-text {

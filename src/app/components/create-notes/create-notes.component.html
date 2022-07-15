@@ -13,31 +13,38 @@
   </div>
 
   <div class="home-form">
-    <form class="form-note " [formGroup]="noteform" (ngSubmit)="addNote()">
+    <h1 class="form-title">{{title}}</h1>
+    <form class="form-note " [formGroup]="noteForm" (ngSubmit)="addNote()">
 
       <input type="text" placeholder="Escribe un titulo" formControlName="title">
-      <div class="warning-text" *ngIf="noteform.get('title')?.hasError('required') && noteform.get('title')?.touched">
+      <div class="warning-text" *ngIf="noteForm.get('title')?.hasError('required') && noteForm.get('title')?.touched">
         <span>Campo Obligatorio</span>
       </div>
 
-      <textarea name="" id="" cols="30" rows="5" placeholder="Escribir nota" formControlName="text"></textarea>
-      <div class="warning-text" *ngIf="noteform.get('text')?.hasError('required') && noteform.get('text')?.touched">
+      <textarea name="" id="" cols="30" rows="5" placeholder="Escribir nota" formControlName="text" maxlength="200"></textarea>
+      <div class="warning-text" *ngIf="noteForm.get('text')?.hasError('required') && noteForm.get('text')?.touched">
         <span>Campo Obligatorio</span>
       </div>
 
-      <input type="text" placeholder="Escribe la etiqueta" formControlName="tag">
-      <div class="warning-text" *ngIf="noteform.get('tag')?.hasError('required') && noteform.get('tag')?.touched">
+      <select name="" id="" formControlName="tag">
+        <option value="" disabled selected hidden>Selecione una etiqueta..</option>
+        <option value="Alta-prioridad">Alta prioridad</option>
+        <option value="Media-prioridad">Media prioridad</option>
+        <option value="Baja-prioridad">Baja prioridad</option>
+
+      </select>
+      <div class="warning-text" *ngIf="noteForm.get('tag')?.hasError('required') && noteForm.get('tag')?.touched">
         <span>Campo Obligatorio</span>
       </div>
 
       <input type="date" name="" id="" formControlName="date">
-      <div class="warning-text" *ngIf="noteform.get('date')?.hasError('required') && noteform.get('date')?.touched">
+      <div class="warning-text" *ngIf="noteForm.get('date')?.hasError('required') && noteForm.get('date')?.touched">
         <span>Campo Obligatorio</span>
       </div>
 
       <div class="buttons">
         <button routerLink="/" class="btn btn-back"><i class='bx bx-arrow-back'></i> Volver</button>
-        <button [disabled]="noteform.invalid" type="submit" class="btn btn-save"><i class='bx bx-save'></i> Guardar</button>
+        <button [disabled]="noteForm.invalid" type="submit" class="btn btn-save"><i class='bx bx-save'></i> Guardar</button>
       </div>
 
     </form>

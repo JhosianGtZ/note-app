@@ -12,11 +12,13 @@ import { CreateNotesComponent } from './components/create-notes/create-notes.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ListNotesComponent,
     CreateNotesComponent,
+
 
   ],
   imports: [

@@ -15,13 +15,13 @@ export class ListNotesComponent implements OnInit {
   constructor(private _noteService: NotesService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.obtenerNotas();
+    this.getNotes();
   }
 
 
-  obtenerNotas(){
+  getNotes(){
     this._noteService.getNotes().subscribe(data =>{
-      console.log(data);
+      
       this.listNotes = data;
 
     }, error =>{
@@ -30,4 +30,15 @@ export class ListNotesComponent implements OnInit {
     })
   }
 
+
+
+  deleteNote(id: any){
+    this._noteService.deleteNote(id).subscribe(data =>{
+      this.toastr.error('Nota eliminada con exito', 'Nota eliminada!', {timeOut: 900, positionClass: 'toast-bottom-right'});
+      this.getNotes();
+    }, error =>{
+      console.log(error);
+      
+    })
+  }
 }
