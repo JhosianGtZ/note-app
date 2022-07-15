@@ -26,5 +26,8 @@ export class NotesService {
     return this.http.post(this.url, note)
   }
   
+  editNote(id: string,note: Note): Observable<any>{
+    return this.http.put(this.url + id, note)
+  }
 
 }

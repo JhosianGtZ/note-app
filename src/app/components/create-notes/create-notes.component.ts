@@ -51,16 +51,32 @@ export class CreateNotesComponent implements OnInit {
       tag: this.noteForm.get('tag')?.value,
       date: this.noteForm.get('date')?.value,
     }
-    console.log(NOTE); 
-    this._noteService.addNote(NOTE).subscribe(data =>{
-      this.toastr.success('La nota se guardo con exito! ', 'Nota guardada!', {timeOut: 900, positionClass: 'toast-bottom-right'});
-      this.router.navigate(['/']);
-  
-    }, error =>{
-      console.log(error);
-      this.noteForm.reset();
-      
-    })
+
+    if (this.id !== null ) {
+      //EDIT NOTE
+      this._noteService.editNote(this.id, NOTE).subscribe(data =>{
+        this.toastr.info('Nota editada con exito!', 'Nota editada', {timeOut: 900, positionClass: 'toast-bottom-right'}) 
+        this.router.navigate(['/']);
+      }, error =>{
+        console.log(error);
+        this.noteForm.reset();
+        
+      })
+
+    }else{
+      //ADD NOTE
+      console.log(NOTE); 
+      this._noteService.addNote(NOTE).subscribe(data =>{
+        this.toastr.success('La nota se guardo con exito! ', 'Nota guardada!', {timeOut: 900, positionClass: 'toast-bottom-right'});
+        this.router.navigate(['/']);
+    
+      }, error =>{
+        console.log(error);
+        this.noteForm.reset();
+        
+      })
+    }
+
 
   };
 
