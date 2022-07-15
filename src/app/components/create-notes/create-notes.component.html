@@ -1,0 +1,45 @@
+<header class="header">
+
+  <div class="header-txt">
+    <h2 routerLink="/">Note<b>App</b></h2>
+  </div>
+
+</header>
+
+<div class="container-home">
+
+  <div class="home-image">
+    <img src="../../../assets/image.svg" alt="Ilustration">
+  </div>
+
+  <div class="home-form">
+    <form class="form-note " [formGroup]="noteform" (ngSubmit)="addNote()">
+
+      <input type="text" placeholder="Escribe un titulo" formControlName="title">
+      <div class="warning-text" *ngIf="noteform.get('title')?.hasError('required') && noteform.get('title')?.touched">
+        <span>Campo Obligatorio</span>
+      </div>
+
+      <textarea name="" id="" cols="30" rows="5" placeholder="Escribir nota" formControlName="text"></textarea>
+      <div class="warning-text" *ngIf="noteform.get('text')?.hasError('required') && noteform.get('text')?.touched">
+        <span>Campo Obligatorio</span>
+      </div>
+
+      <input type="text" placeholder="Escribe la etiqueta" formControlName="tag">
+      <div class="warning-text" *ngIf="noteform.get('tag')?.hasError('required') && noteform.get('tag')?.touched">
+        <span>Campo Obligatorio</span>
+      </div>
+
+      <input type="date" name="" id="" formControlName="date">
+      <div class="warning-text" *ngIf="noteform.get('date')?.hasError('required') && noteform.get('date')?.touched">
+        <span>Campo Obligatorio</span>
+      </div>
+
+      <div class="buttons">
+        <button routerLink="/" class="btn btn-back"><i class='bx bx-arrow-back'></i> Volver</button>
+        <button [disabled]="noteform.invalid" type="submit" class="btn btn-save"><i class='bx bx-save'></i> Guardar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

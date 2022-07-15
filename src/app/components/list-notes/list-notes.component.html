@@ -1,0 +1,34 @@
+<header class="header">
+
+  <div class="header-txt">
+    <h2 routerLink="">Note<b>App</b></h2>
+  </div>
+
+  <div class="header-btn">
+    <button class="btn-new" routerLink="/create-note"> <b>+</b> Nueva Nota</button>
+  </div>
+</header>
+
+<div class="notes-container" *ngIf="listNotes.length > 0">
+
+  <div class="note" *ngFor="let note of listNotes">
+
+    <div class="note-header">
+      <h3>{{note.title}}</h3>
+      <a><i class="bx bxs-edit btn-icon"></i></a>
+    </div>
+
+    <div class="note-body">
+      <p class="note-txt">{{note.text}}</p>
+      <p class="note-tag">{{note.tag}}</p>
+    </div>
+
+    <div class="note-footer">
+      <h4>{{note.date | date:'dd-MM-yyyy'}}</h4>
+      <a><i class="bx bxs-trash-alt btn-icon"></i></a>
+    </div>
+
+  </div>
+</div>
+
+<h1 class="empty-text" *ngIf="listNotes.length == 0">No hay notas para mostrar</h1>

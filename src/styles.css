@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+/* MONTSERRAT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+
+    --bg: #2B2D42;
+    --yellow: #E6AF2E;
+    --black: #000;
+  
+  }
+  
+  
+  body{
+      background-color: var(--bg);
+      font-family: 'Montserrat', sans-serif;
+  }
+
+  .header-txt h2 {
+    font-size: 40px;
+    color: #f1f1f1;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .header-txt h2:hover{
+    opacity: 90%;
+  }
+
+
+  .btn {
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all .5s ease;
+  }
+  
