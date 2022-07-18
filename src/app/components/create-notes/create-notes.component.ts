@@ -15,8 +15,9 @@ import { NotesService } from 'src/app/services/notes.service';
 export class CreateNotesComponent implements OnInit {
 
   noteForm : FormGroup;
-  title = 'Crear Nueva Nota';
+  title = 'Crear nueva nota.';
   id: string | null;
+  searchValue: string = '';
 
   constructor(
     

@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { ListNotesComponent } from './components/list-notes/list-notes.component';
 
 import { CreateNotesComponent } from './components/create-notes/create-notes.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 
 
@@ -27,7 +27,8 @@ import { HttpClientModule } from "@angular/common/http";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],

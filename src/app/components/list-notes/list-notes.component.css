@@ -33,10 +33,10 @@
   width: 160px;
   height: 40px;
   border: none;
-  border-radius: 50px;
+  border-radius: 21px;
   font-weight: 600;
   transition: all .5s ease;
-  
+
 }
 
 .btn-new:hover {
@@ -49,7 +49,28 @@
 .btn-new b {
   color: var(--yellow);
 }
+.search-container{
+  display: flex;
+  align-items: center;justify-content: space-evenly;
+  border-radius: 21px;
+  background-color: #f1f1f1;
+  height: 40px;
+  width: 250px;
+  box-shadow: 5px 5px 5px #000;
+  
+}
+.search-container input{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  height: 80%;
+  outline: none;
+}
 
+.filter{
+  display: none;
+}
 /*Notes styles*/
 
 
@@ -67,10 +88,9 @@
 .note {
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 4px;
   width: 400px;
-  height: 300px;
-  background-color: #f1f1f1;
+  height: 340px;
   margin-top: 1rem;
   transition: all .5s ease;
 }
@@ -78,7 +98,7 @@
 .note-header,
 .note-footer {
   display: flex;
-  height: 40px;
+  height: 50px;
   width: 90%;
   margin: 15px auto;
   align-items: center;
@@ -89,13 +109,14 @@
   font-size: 25px;
 }
 
-.note-txt{
+.note-txt {
+
   font-weight: 500;
 }
 
 
 .note-footer a,
-.note-header a  {
+.note-header a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,71 +128,158 @@
   cursor: pointer;
   text-decoration: none;
   color: #f1f1f1;
+  transition: all .3s ease-in-out;
 }
 
-
-.note-footer a {
-  color: rgb(200, 28, 28);
-}
-
-.note-header a:hover,
-.note-footer a:hover {
-  opacity: 70%;
+.note-header a:hover {
+  background-color: #f1f1f1;
+  color: var(--bg);
 }
 
 .note-header i {
   font-size: 20px;
 }
 
+
+.note-footer a {
+
+  color: #c81c1c;
+}
+
+.note-footer a:hover {
+  background-color: #f1f1f1;
+  color: rgb(200, 28, 28);
+}
+
+
+
+
 .note-body {
   font-size: 15px;
   line-height: 25px;
   display: flex;
   flex-direction: column;
-  margin: 0 1rem;
-  height: 130px;
+  margin: 0 auto;
+  height: 150px;
+  width: 90%;
+}
+
+.note-tag-container {
+  height: 50px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .note-tag {
   font-weight: 500;
   width: 160px;
   text-align: center;
-  height: 25px;
-  border-radius: 20px;
-  border: 1px solid ;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 21px;
+  border: 1px solid;
+  font-weight: 600;
+  color: #f1f1f1;
 }
+
 
 .note:hover {
   transform: translateY(-5px);
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.648);
 
 }
-.empty-text{
+
+.empty-text {
   font-size: 40px;
   margin-top: 2rem;
   text-align: center;
   color: #f1f1f1;
 }
-.empty-image{
-  margin:  0 auto;
+
+.empty-image {
+  margin: 0 auto;
   width: 50%;
   height: 60vh;
   margin-top: -3rem;
 }
 
-.Alta-prioridad{
-  background-color:#ee6055;
-  color: #111;
+.Alta-prioridad {
+  background-color: #ee6055;
+  color: #fff;
 }
-.Media-prioridad{
- background-color: #ffd97d;
- color: #111;
+
+.Media-prioridad {
+  background-color: #ffd87d;
+  color: #000;
 }
-.Baja-prioridad{
+
+.Baja-prioridad {
   background-color: #60d394;
- color: #111;
- 
+  color: #fff;
+
 }
 
 
 /* Responsive design*/
+@media only screen and (max-width: 1370px) {
+  .note {
+    width: 380px;
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .note {
+    width: 340px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .note {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .header-txt h2 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .header-txt h2 {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .header-txt h2 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 3840px) and (min-width: 600px) {
+  .btn-new::before {
+    content: "+ Nueva nota";
+  }
+}
+
+@media (max-width:600px) {
+  .btn-new::before {
+    content: "+";
+  }
+
+  .btn-new {
+    width: 45px;
+    height: 45px;
+    color: var(--yellow);
+  }
+
+  .btn-new:hover {
+    transform: translateY(-5px);
+    box-shadow: none;
+    background-color: var(--yellow);
+    color: #f1f1f1;
+
+  }
+}

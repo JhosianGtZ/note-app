@@ -52,7 +52,8 @@
 }
 
 
-.form-note input, .form-note select {
+.form-note input,
+.form-note select {
   font-family: 'Montserrat';
   font-weight: 600;
   height: 35px;
@@ -99,7 +100,8 @@
   color: #f1f1f1;
   background-color: #2d6a7c;
 }
-.form-title{
+
+.form-title {
   color: #f1f1f1;
 }
 
@@ -111,34 +113,61 @@
   margin-bottom: 1rem;
   transition: all .9s ease-in-out;
   font-size: 13px;
-
   -webkit-animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
 }
 
- @-webkit-keyframes fade-in-bck {
+/* Animacion de texto*/
+
+@-webkit-keyframes fade-in-bck {
   0% {
     -webkit-transform: translateZ(80px);
-            transform: translateZ(80px);
+    transform: translateZ(80px);
     opacity: 0;
   }
+
   100% {
     -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-}
-@keyframes fade-in-bck {
-  0% {
-    -webkit-transform: translateZ(80px);
-            transform: translateZ(80px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+    transform: translateZ(0);
     opacity: 1;
   }
 }
 
+@keyframes fade-in-bck {
+  0% {
+    -webkit-transform: translateZ(80px);
+    transform: translateZ(80px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+
+@media screen and (max-width: 950px) and (min-width: 0px){
+  .buttons{
+    margin-top: 1.5rem;
+  }
+  .container-home {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .home-image img {
+    display: none;
+    width: 0;
+  }
+
+  .home-form {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
