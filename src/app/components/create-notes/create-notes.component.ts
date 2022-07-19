@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Note } from 'src/app/models/note';
@@ -18,7 +18,7 @@ export class CreateNotesComponent implements OnInit {
   title = 'Crear nueva nota.';
   id: string | null;
   searchValue: string = '';
-
+  selected: FormControl = new FormControl();
   constructor(
     
     private fb: FormBuilder,
@@ -29,10 +29,13 @@ export class CreateNotesComponent implements OnInit {
     
     ) {
     this.noteForm = fb.group({
+      
       title: ['', Validators.required],
       text: ['', Validators.required],
       tag: ['', Validators.required],
       date: ['', Validators.required],
+      order: ['', Validators.required],
+
 
     });
     this.id = this.aRouter.snapshot.paramMap.get('id');
@@ -40,7 +43,32 @@ export class CreateNotesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.itsEdit()
+    this.itsEdit();
+  }
+
+
+  public setVAlue(event:any){
+    
+    console.log(event.target.value);
+    
+    if (event.target.value == 'Alta-prioridad') {
+
+       this.noteForm.patchValue({
+          order: 1
+       })
+        
+    }else if (event.target.value == 'Media-prioridad') {
+      this.noteForm.patchValue({
+          order: 2
+       })
+      
+    }else if (event.target.value == 'Baja-prioridad') {
+      this.noteForm.patchValue({
+        order: 3
+     })
+      
+    }
+    
   }
 
 
@@ -51,6 +79,7 @@ export class CreateNotesComponent implements OnInit {
       text: this.noteForm.get('text')?.value,
       tag: this.noteForm.get('tag')?.value,
       date: this.noteForm.get('date')?.value,
+      order: this.noteForm.get('order')?.value
     }
 
     if (this.id !== null ) {
@@ -97,10 +126,16 @@ export class CreateNotesComponent implements OnInit {
           text: data.text,
           tag: data.tag,
           date: data.date,
+          order: data.order,
 
          })
 
       })
     }
   }  
+
+
+
 }
+
+

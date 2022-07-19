@@ -118,6 +118,12 @@
 
 }
 
+.prioridad-lbl {
+  margin: .5rem 0;
+  color: #f1f1f1;
+  font-weight: 500;
+}
+
 /* Animacion de texto*/
 
 @-webkit-keyframes fade-in-bck {
@@ -150,10 +156,11 @@
 
 /* Responsive design */
 
-@media screen and (max-width: 950px) and (min-width: 0px){
-  .buttons{
+@media screen and (max-width: 950px) and (min-width: 0px) {
+  .buttons {
     margin-top: 1.5rem;
   }
+
   .container-home {
     margin-top: 1.5rem;
     display: flex;
