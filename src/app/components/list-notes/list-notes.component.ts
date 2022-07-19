@@ -1,10 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output , LOCALE_ID, ViewChild} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Note } from 'src/app/models/note';
 import { NotesService } from 'src/app/services/notes.service';
 import * as moment from "moment";
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import { ModalManager } from "ngb-modal";
+
+
+
 
 @Component({
   selector: 'app-list-notes',
@@ -14,7 +18,9 @@ import { FormsModule } from '@angular/forms';
 export class ListNotesComponent implements OnInit {
   listNotes: Note[]= [];
 
-  constructor(private _noteService: NotesService, private toastr: ToastrService) { }
+  @ViewChild('modalForm') modalForm:any;
+
+  constructor(private _noteService: NotesService, private toastr: ToastrService, private modalService: ModalManager) { }
 
   ngOnInit(): void {
     this.getNotes();
@@ -41,7 +47,25 @@ export class ListNotesComponent implements OnInit {
     })
   }
 
+  searchAction(event: any){
+    
   
+
+    if (event.target.matches("#search")) {
+      document.querySelectorAll(".note").forEach(nota =>{
+        nota.textContent?.toLowerCase().includes(event.target.value.toLowerCase())
+        ?nota.classList.remove("display")
+        :nota.classList.add("display")
+      })
+    }
+    
+  }
+  
+
+  openModal(){
+
+    this.modalService.open(this.modalForm, {size: 'lg' , backdrop: 'static'})
+  }
 
   deleteNote(id: any){
     
@@ -69,4 +93,6 @@ export class ListNotesComponent implements OnInit {
     })
   }
 }
+
+
 

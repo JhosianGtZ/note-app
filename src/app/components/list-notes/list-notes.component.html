@@ -4,19 +4,28 @@
     <h2 routerLink="">Note<b>App</b></h2>
   </div>
 
-  <!-- <div class="search-container">
-      <input type="text" id="search" [(ngModel)]="searchValue" (input)="onSearchTextChanged()">
-      <i class='bx bx-search'></i>
-  </div> -->
-
   <div class="header-btn">
-    <button class="btn-new" routerLink="/create-note"></button>
+    <button class="btn-new" (click)="openModal()"></button>
   </div>
 </header>
 
+<div class="functions-header">
+
+<div class="search-container">
+  <input type="text" id="search" placeholder="Buscar..." (keyup)="searchAction($event)">
+  <i class='bx bx-search'></i>
+</div>
+
+  <select name="" id="">
+    <option value="">ORDENAR</option>
+  </select>
+</div>
+
+
+
 <div class="notes-container" *ngIf="listNotes.length > 0">
 
-  <div class="note {{note.tag}}" *ngFor="let note of listNotes">
+  <div class="note {{note.tag}}" *ngFor="let note of listNotes" >
 
     <div class="note-header">
       <h3>{{note.title}}</h3>
@@ -32,7 +41,7 @@
     </div>
 
     <div class="note-footer">
-      <h4>{{note.date | date:'dd-MM-YYYY'}}</h4>
+      <h4 >{{note.date | date:'dd-MMM-YYYY'}} </h4>
       <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
     </div>
 
@@ -44,3 +53,8 @@
 <div class="empty-image" *ngIf="listNotes.length == 0">
   <img src="../../../assets/image2.svg" alt="Ilustration">
 </div>
+
+
+<modal #modalForm>
+  <app-create-notes (onCreate)="getNotes()"></app-create-notes>
+</modal>

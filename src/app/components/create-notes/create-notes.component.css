@@ -124,6 +124,16 @@
   font-weight: 500;
 }
 
+.custom-select{
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-select select:nth-child(1){
+    width: 500px;
+    border: 1pz solid red;
+}
+
 /* Animacion de texto*/
 
 @-webkit-keyframes fade-in-bck {

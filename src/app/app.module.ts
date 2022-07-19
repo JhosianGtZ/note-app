@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -11,6 +11,14 @@ import { ListNotesComponent } from './components/list-notes/list-notes.component
 import { CreateNotesComponent } from './components/create-notes/create-notes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
+
+import  localEs  from "@angular/common/locales/es";
+
+import { registerLocaleData } from "@angular/common";
+
+import { ModalModule } from "ngb-modal";
+registerLocaleData(localEs, 'es');
+
 
 
 @NgModule({
@@ -28,10 +36,11 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule, 
+    ModalModule
 
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

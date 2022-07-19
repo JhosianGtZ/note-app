@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Note } from 'src/app/models/note';
 import { NotesService } from 'src/app/services/notes.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-create-notes',
@@ -14,11 +15,15 @@ import { NotesService } from 'src/app/services/notes.service';
 
 export class CreateNotesComponent implements OnInit {
 
+  @Output() onCreate: EventEmitter<any> = new EventEmitter<any>();
+
   noteForm : FormGroup;
   title = 'Crear nueva nota.';
   id: string | null;
   searchValue: string = '';
   selected: FormControl = new FormControl();
+  dateFormat = "dd-MM-yyyy";
+
   constructor(
     
     private fb: FormBuilder,
@@ -44,6 +49,7 @@ export class CreateNotesComponent implements OnInit {
 
   ngOnInit(): void {
     this.itsEdit();
+      
   }
 
 
@@ -54,17 +60,22 @@ export class CreateNotesComponent implements OnInit {
     if (event.target.value == 'Alta-prioridad') {
 
        this.noteForm.patchValue({
-          order: 1
+          order: 1,
+          date: Date()
        })
         
     }else if (event.target.value == 'Media-prioridad') {
       this.noteForm.patchValue({
-          order: 2
+          order: 2,
+          date: Date()
+
        })
       
     }else if (event.target.value == 'Baja-prioridad') {
       this.noteForm.patchValue({
-        order: 3
+        order: 3,
+        date: Date()
+
      })
       
     }
@@ -73,6 +84,9 @@ export class CreateNotesComponent implements OnInit {
 
 
   addNote(){
+
+    const date =  Date.now();
+
     const NOTE: Note = {
       
       title: this.noteForm.get('title')?.value,
@@ -110,10 +124,9 @@ export class CreateNotesComponent implements OnInit {
 
   };
 
-  itsEdit(){
+  itsEdit(){  
+
     console.log('Edit working');
-    console.log(this.id);
-    
     
     if (this.id !== null) {
       this.title = 'Editar Nota';
