@@ -8,11 +8,12 @@ const routes: Routes = [
   {path: '', component: ListNotesComponent},
   {path: 'create-note', component: CreateNotesComponent},
   {path: 'edit-note/:id', component: CreateNotesComponent},
-  {path: '***', redirectTo: '', pathMatch: 'full'}
+  {path: '***', redirectTo: '', pathMatch: 'full'},
+  
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule], 
 })
 export class AppRoutingModule { }

@@ -26,16 +26,17 @@
         <span>Campo Obligatorio</span>
       </div>
 
-      <div class="custom-select">
-        <label class="prioridad-lbl" for="prioridad">Seleccione una opcion</label>
+     
+   
         <select (change)="setVAlue($event)" name="prioridad" id="" formControlName="tag" >
-          <option id="opt" value="Alta-prioridad">Alta prioridad</option>
-          <option id="opt" value="Media-prioridad">Media prioridad</option>
-          <option id="opt" value="Baja-prioridad">Baja prioridad</option>
+
+            <option id="opt" value="" selected disabled>Seleccione una opcion</option>
+            <option id="opt" value="Alta-prioridad">Alta prioridad</option>
+            <option id="opt" value="Media-prioridad">Media prioridad</option>
+            <option id="opt" value="Baja-prioridad">Baja prioridad</option>
   
         </select>
-      </div>
-      
+ 
       <div class="warning-text" *ngIf="noteForm.get('tag')?.hasError('required') && noteForm.get('tag')?.touched">
         <span>Campo Obligatorio</span>
       </div>

@@ -16,7 +16,9 @@ import  localEs  from "@angular/common/locales/es";
 
 import { registerLocaleData } from "@angular/common";
 
-import { ModalModule } from "ngb-modal";
+//NgBootstrap
+import {NgbModal, ModalDismissReasons, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 registerLocaleData(localEs, 'es');
 
 
@@ -37,7 +39,8 @@ registerLocaleData(localEs, 'es');
     ToastrModule.forRoot(),
     HttpClientModule,
     FormsModule, 
-    ModalModule
+    NgbModule,
+
 
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es'}],

@@ -5,16 +5,16 @@
   </div>
 
   <div class="header-btn">
-    <button class="btn-new" (click)="openModal()"></button>
+    <button class="btn-new" routerLink="/create-note"></button>
   </div>
 </header>
 
 <div class="functions-header">
 
-<div class="search-container">
-  <input type="text" id="search" placeholder="Buscar..." (keyup)="searchAction($event)">
-  <i class='bx bx-search'></i>
-</div>
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Buscar..." (keyup)="searchAction($event)">
+    <i class='bx bx-search'></i>
+  </div>
 
   <select name="" id="">
     <option value="">ORDENAR</option>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="note-footer">
-      <h4 >{{note.date | date:'dd-MMM-YYYY'}} </h4>
+      <h4>{{note.date | date:'dd-MMM-YYYY'}} </h4>
       <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
     </div>
 
@@ -55,6 +55,6 @@
 </div>
 
 
-<modal #modalForm>
-  <app-create-notes (onCreate)="getNotes()"></app-create-notes>
-</modal>
+
+
+

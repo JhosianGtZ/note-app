@@ -1,12 +1,10 @@
-import { Component, EventEmitter, OnInit, Output , LOCALE_ID, ViewChild} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output , LOCALE_ID} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Note } from 'src/app/models/note';
 import { NotesService } from 'src/app/services/notes.service';
-import * as moment from "moment";
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
-import { ModalManager } from "ngb-modal";
-
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 
 
@@ -15,12 +13,12 @@ import { ModalManager } from "ngb-modal";
   templateUrl: './list-notes.component.html',
   styleUrls: ['./list-notes.component.css']
 })
+
 export class ListNotesComponent implements OnInit {
   listNotes: Note[]= [];
+  closeResult= '';
 
-  @ViewChild('modalForm') modalForm:any;
-
-  constructor(private _noteService: NotesService, private toastr: ToastrService, private modalService: ModalManager) { }
+  constructor(private _noteService: NotesService, private toastr: ToastrService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getNotes();
@@ -35,6 +33,26 @@ export class ListNotesComponent implements OnInit {
   onSearchTextChanged(){
     this.searchTextChanged.emit(this.searchValue);
   }
+
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  
 
   getNotes(){
     this._noteService.getNotes().subscribe(data =>{
@@ -62,11 +80,6 @@ export class ListNotesComponent implements OnInit {
   }
   
 
-  openModal(){
-
-    this.modalService.open(this.modalForm, {size: 'lg' , backdrop: 'static'})
-  }
-
   deleteNote(id: any){
     
 
@@ -93,6 +106,4 @@ export class ListNotesComponent implements OnInit {
     })
   }
 }
-
-
 
