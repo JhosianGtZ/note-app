@@ -11,9 +11,14 @@ export class NotesService {
 
   constructor(private http: HttpClient) { }
 
-  getNotes(): Observable<any>{
+  getNotes(sort:string, order:string): Observable<any>{
+    return this.http.get(this.url + sort + '/' + order);
+  }
+
+  getNotesTitle(): Observable<any>{
     return this.http.get(this.url);
   }
+
   getNote(id: string): Observable<any>{
     return this.http.get(this.url + id);
   }

@@ -55,7 +55,7 @@ export class ListNotesComponent implements OnInit {
   
 
   getNotes(){
-    this._noteService.getNotes().subscribe(data =>{
+    this._noteService.getNotes('order', '1').subscribe(data =>{
       
       this.listNotes = data;
 
@@ -64,6 +64,51 @@ export class ListNotesComponent implements OnInit {
       
     })
   }
+
+  getNotesFilter(){
+    this._noteService.getNotes('title', '1').subscribe(data =>{
+    
+      
+      // this.listNotes = data;
+      this.listNotes.filter( function (e){
+          return e.order == 1;
+      })
+
+    }, error =>{
+      console.log(error);
+      
+    })
+  }
+
+
+
+  getNotesTitle(){
+    this._noteService.getNotes('title', '1').subscribe(data =>{
+    
+      
+      this.listNotes = data;
+
+    }, error =>{
+      console.log(error);
+      
+    })
+  }
+  getNotesDate(){
+    this._noteService.getNotes('date', '1').subscribe(data =>{
+    
+      
+      this.listNotes = data;
+
+    }, error =>{
+      console.log(error);
+      
+    })
+  }
+
+
+
+
+
 
   searchAction(event: any){
     
@@ -104,6 +149,12 @@ export class ListNotesComponent implements OnInit {
         Swal.fire('Nota eliminada!', '', 'error')
       } 
     })
+  }
+
+
+  select(){
+    console.log("A de alfa");
+    
   }
 }
 

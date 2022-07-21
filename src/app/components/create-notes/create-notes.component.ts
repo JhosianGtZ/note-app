@@ -6,6 +6,8 @@ import { Note } from 'src/app/models/note';
 import { NotesService } from 'src/app/services/notes.service';
 import { formatDate } from '@angular/common';
 
+
+
 @Component({
   selector: 'app-create-notes',
   templateUrl: './create-notes.component.html',
@@ -23,6 +25,8 @@ export class CreateNotesComponent implements OnInit {
   searchValue: string = '';
   selected: FormControl = new FormControl();
   dateFormat = "dd-MM-yyyy";
+
+  public files:any = [];
 
   constructor(
     
@@ -147,7 +151,28 @@ export class CreateNotesComponent implements OnInit {
     }
   }  
 
+  uploadFile(event:any){
 
+    const fileUp = event.target.files[0];
+    this.files.push(fileUp);
+    
+  }
+
+  // imageBase64 = async ($event: any) => new Promise((resolve,reject) =>  {
+  //   try {
+  //     const unsafeImg = window.URL.createObjectURL($event);
+  //     const image = this.saitizer.bypassSecurityTrustUrl(unsafeImg);
+  //     const reader = new Filereader();
+  //     reader.readAsDataURL($event);
+  //     reader.onload= () => {
+    
+  //      }
+
+      
+  //   } catch (error) {
+      
+  //   }
+  // }
 
 }
 

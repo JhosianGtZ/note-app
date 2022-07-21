@@ -16,16 +16,27 @@
     <i class='bx bx-search'></i>
   </div>
 
-  <select name="" id="">
-    <option value="">ORDENAR</option>
-  </select>
+  <div class="dropdown">
+    <div class="dropdown-select">
+      <span class="select">Ordenar</span>
+      <i class='bx bx-caret-down'></i>
+    </div>
+    <div class="dropdown-list">
+      <div (click)="getNotesTitle()" class="dropdown-list__item">Alfabeticamente</div>
+      <div (click)="getNotesDate()" class="dropdown-list__item">Fecha</div>
+      <div (click)="getNotes()" class="dropdown-list__item">Prioridad</div>
+    </div>
+  </div>
+
+
+
 </div>
 
 
 
-<div class="notes-container" *ngIf="listNotes.length > 0">
+<!-- <div class="notes-container" *ngIf="listNotes.length > 0">
 
-  <div class="note {{note.tag}}" *ngFor="let note of listNotes" >
+  <div class="note {{note.tag}}" *ngFor="let note of listNotes">
 
     <div class="note-header">
       <h3>{{note.title}}</h3>
@@ -46,15 +57,28 @@
     </div>
 
   </div>
+</div> -->
+
+<div class="notes-prioridad-container">
+
+    <div class="alta-prioridad">
+       <div class="" *ngFor="let note of listNotes">
+          
+       </div>
+    </div>
+
+    <div class="media-prioridad">
+      <h1>Columna 2</h1>
+    </div>
+
+    <div class="baja-prioridad">
+      <h1>Columna 3</h1>
+    </div>
 </div>
 
+<!-- 
 <h1 class="empty-text" *ngIf="listNotes.length == 0">No hay notas para mostrar</h1>
 
 <div class="empty-image" *ngIf="listNotes.length == 0">
   <img src="../../../assets/image2.svg" alt="Ilustration">
-</div>
-
-
-
-
-
+</div> -->

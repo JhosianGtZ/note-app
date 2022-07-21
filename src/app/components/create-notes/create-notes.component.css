@@ -142,7 +142,7 @@
 
 .custom-select select:nth-child(1){
     width: 500px;
-    border: 1pz solid red;
+    border: 1px solid red;
 }
 
 /* Animacion de texto*/

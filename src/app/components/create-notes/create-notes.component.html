@@ -16,12 +16,12 @@
     <h1 class="form-title">{{title}}</h1>
     <form class="form-note " [formGroup]="noteForm" (ngSubmit)="addNote()">
 
-      <input type="text" placeholder="Escribe un titulo" formControlName="title">
+      <input type="text" placeholder="Escribe un titulo" formControlName="title" maxlength="25">
       <div class="warning-text" *ngIf="noteForm.get('title')?.hasError('required') && noteForm.get('title')?.touched">
         <span>Campo Obligatorio</span>
       </div>
 
-      <textarea name="" id="" cols="30" rows="5" placeholder="Escribir nota" formControlName="text" maxlength="200"></textarea>
+      <textarea name="" id="" cols="30" rows="5" placeholder="Escribir nota" formControlName="text" maxlength="159"></textarea>
       <div class="warning-text" *ngIf="noteForm.get('text')?.hasError('required') && noteForm.get('text')?.touched">
         <span>Campo Obligatorio</span>
       </div>
@@ -35,12 +35,16 @@
             <option id="opt" value="Media-prioridad">Media prioridad</option>
             <option id="opt" value="Baja-prioridad">Baja prioridad</option>
   
-        </select>
+        </select>.
  
       <div class="warning-text" *ngIf="noteForm.get('tag')?.hasError('required') && noteForm.get('tag')?.touched">
         <span>Campo Obligatorio</span>
       </div>
 
+      <!-- <input (change)="uploadFile($event)" type="file">
+      <div class="preview">
+        <img [src]="files[0]">
+      </div> -->
 
 
       <div class="buttons">
