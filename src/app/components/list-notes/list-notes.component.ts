@@ -106,6 +106,48 @@ export class ListNotesComponent implements OnInit {
       this.listNotes = data;
       console.log(data);
       
+      this.altaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 1;
+        
+      });
+
+
+      this.mediaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 2;
+        
+      })
+
+      this.bajaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 3;
+        
+      })      
+
+    }, error =>{
+      console.log(error);
+      
+    })
+  }
+  getNotesTitleDes(){
+    this._noteService.getNotes('title', '-1').subscribe(data =>{
+    
+      
+      this.listNotes = data;
+      console.log(data);
+      this.altaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 1;
+        
+      });
+
+
+      this.mediaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 2;
+        
+      })
+
+      this.bajaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 3;
+        
+      })      
 
     }, error =>{
       console.log(error);
@@ -118,6 +160,21 @@ export class ListNotesComponent implements OnInit {
     
       
       this.listNotes = data;
+      this.altaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 1;
+        
+      });
+
+
+      this.mediaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 2;
+        
+      })
+
+      this.bajaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 3;
+        
+      })
 
     }, error =>{
       console.log(error);
@@ -169,6 +226,52 @@ export class ListNotesComponent implements OnInit {
         Swal.fire('Nota eliminada!', '', 'error')
       } 
     })
+  }
+
+
+  dropDown(){
+    //Get all dropdowns from the document
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  //Loop through all dropdown elements
+  dropdowns.forEach(dropdown => {
+    //Get inner elements from each dropdown
+    let select:any = dropdown.querySelector('.select');
+    // let caret:any = dropdown.querySelector('.caret');
+    let menu:any = dropdown.querySelector('.menu');
+    let options:any = dropdown.querySelectorAll('.menu li');
+    let selected:any = dropdown.querySelector('.select');
+
+    //Add a click event to tthe select element
+    select.addEventListener('click', () => {
+      //Add the clicked select styles to the select element
+      select.classList.toggle('select-clicked')
+      // //Add the rotate styles to the caret element
+      // // caret.classList.toggle('caret-rotate');
+      menu.classList.toggle('menu-open');
+    });
+
+    options.forEach((option:any) => {
+
+      option.addEventListener('click', () => {
+
+        selected.innerText = option.innerText;
+
+        select.classList.remove('select-clicked');
+
+        // // caret.classList.remove('caret-rotate');
+
+        menu.classList.remove('menu-open')
+
+        options.forEach((option:any) => {
+          option.classList.remove('active')
+        })
+        
+        option.classList.add('active');
+      })
+    })
+  })
+
   }
 
 

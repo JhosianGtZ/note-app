@@ -4,114 +4,118 @@
     <div class="header-txt">
       <h2 routerLink="">Note<b>App</b></h2>
     </div>
-  
+
     <div class="header-btn">
       <button class="btn-new" routerLink="/create-note"></button>
     </div>
   </header>
-  
+
   <div class="functions-header">
-  
+
     <div class="search-container">
       <input type="text" id="search" placeholder="Buscar..." (keyup)="searchAction($event)">
       <i class='bx bx-search'></i>
     </div>
-  
-    <div class="dropdown">
-      <div class="dropdown-select">
-        <span class="select">Ordenar</span>
-        <i class='bx bx-caret-down'></i>
+
+
+    <div class="dropdown" >
+      <div class="select" (click)="dropDown()">
+        <span  class="selected">Ordenar</span>
+        <div class="caret"></div>
       </div>
-      <div class="dropdown-list">
-        <div (click)="getNotesTitle()" class="dropdown-list__item">Alfabeticamente</div>
-        <div (click)="getNotesDate()" class="dropdown-list__item">Fecha</div>
-        <div (click)="getNotes()" class="dropdown-list__item">Prioridad</div>
-      </div>
+      <ul class="menu">
+        <li (click)="getNotesTitle()" >Ascendente</li>
+        
+        <li (click)="getNotesTitleDes()" >Descendente</li>
+        
+        <li class="active" (click)="getNotesDate()" >Fecha</li>
+      </ul>
     </div>
-  
-  
+
   </div>
 </div>
 
 
 <div class="notes-prioridad-container">
 
-    <div class="alta-prioridad">
-      <div class="note {{note.tag}}" *ngFor="let note of altaPrioridad">
+  <div class="alta-prioridad">
+    <div class="note {{note.tag}}" *ngFor="let note of altaPrioridad">
 
-        <div class="note-header">
-          <h3>{{note.title}}</h3>
-          <a [routerLink]="['/edit-note', note._id]"> <i class="bx bxs-edit btn-icon"></i></a>
-        </div>
-    
-        <div class="note-body">
-          <p class="note-txt">{{note.text}}</p>
-        </div>
-    
-        <div class="note-tag-container">
-          <p class="note-tag {{note.tag}}">{{note.tag}}</p>
-        </div>
-    
-        <div class="note-footer">
-          <h4>{{note.date | date:'dd-MMM-YYYY'}} </h4>
-          <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
-        </div>
-    
+      <div class="note-header">
+        <h3>{{note.title}}</h3>
+        <a [routerLink]="['/edit-note', note._id]"> <i class="bx bxs-edit btn-icon"></i></a>
       </div>
-    </div>
 
-    <div class="media-prioridad">
-      <div class="note {{note.tag}}" *ngFor="let note of mediaPrioridad">
-
-        <div class="note-header">
-          <h3>{{note.title}}</h3>
-          <a [routerLink]="['/edit-note', note._id]"> <i class="bx bxs-edit btn-icon"></i></a>
-        </div>
-    
-        <div class="note-body">
-          <p class="note-txt">{{note.text}}</p>
-        </div>
-    
-        <div class="note-tag-container">
-          <p class="note-tag {{note.tag}}">{{note.tag}}</p>
-        </div>
-    
-        <div class="note-footer">
-          <h4>{{note.date | date:'dd-MMM-YYYY'}} </h4>
-          <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
-        </div>
-    
+      <div class="note-body">
+        <p class="note-txt">{{note.text}}</p>
       </div>
-    </div>
 
-    <div class="baja-prioridad">
-      <div class="note {{note.tag}}" *ngFor="let note of bajaPrioridad">
-
-        <div class="note-header">
-          <h3>{{note.title}}</h3>
-          <a [routerLink]="['/edit-note', note._id]"> <i class="bx bxs-edit btn-icon"></i></a>
-        </div>
-    
-        <div class="note-body">
-          <p class="note-txt">{{note.text}}</p>
-        </div>
-    
-        <div class="note-tag-container">
-          <p class="note-tag {{note.tag}}">{{note.tag}}</p>
-        </div>
-    
-        <div class="note-footer">
-          <h4>{{note.date | date:'dd-MMM-YYYY'}} </h4>
-          <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
-        </div>
-    
+      <div class="note-tag-container">
+        <p class="note-tag {{note.tag}}">{{note.tag}}</p>
       </div>
+
+      <div class="note-footer">
+        <h4>{{note.date | date:'dd-MMM-YYYY'}} </h4>
+        <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
+      </div>
+
     </div>
+  </div>
+
+  <div class="media-prioridad">
+    <div class="note {{note.tag}}" *ngFor="let note of mediaPrioridad">
+
+      <div class="note-header">
+        <h3>{{note.title}}</h3>
+        <a [routerLink]="['/edit-note', note._id]"> <i class="bx bxs-edit btn-icon"></i></a>
+      </div>
+
+      <div class="note-body">
+        <p class="note-txt">{{note.text}}</p>
+      </div>
+
+      <div class="note-tag-container">
+        <p class="note-tag {{note.tag}}">{{note.tag}}</p>
+      </div>
+
+      <div class="note-footer">
+        <h4>{{note.date | date:'dd-MMM-YYYY'}} </h4>
+        <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="baja-prioridad">
+    <div class="note {{note.tag}}" *ngFor="let note of bajaPrioridad">
+
+      <div class="note-header">
+        <h3>{{note.title}}</h3>
+        <a [routerLink]="['/edit-note', note._id]"> <i class="bx bxs-edit btn-icon"></i></a>
+      </div>
+
+      <div class="note-body">
+        <p class="note-txt">{{note.text}}</p>
+      </div>
+
+      <div class="note-tag-container">
+        <p class="note-tag {{note.tag}}">{{note.tag}}</p>
+      </div>
+
+      <div class="note-footer">
+        <h4>{{note.date | date:'dd-MMM-YYYY'}} </h4>
+        <a (click)="deleteNote(note._id)"> <i class="bx bxs-trash-alt btn-icon"></i></a>
+      </div>
+
+    </div>
+  </div>
 </div>
 
-<!-- 
+
 <h1 class="empty-text" *ngIf="listNotes.length == 0">No hay notas para mostrar</h1>
 
 <div class="empty-image" *ngIf="listNotes.length == 0">
   <img src="../../../assets/image2.svg" alt="Ilustration">
-</div> -->
+</div>
+
+
