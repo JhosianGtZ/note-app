@@ -70,7 +70,7 @@ export class ListNotesComponent implements OnInit {
     
       
       // this.listNotes = data;
-      this.listNotes.filter( function (e){
+     const altaPrioridad = this.listNotes.filter( function (e){
           return e.order == 1;
       })
 
