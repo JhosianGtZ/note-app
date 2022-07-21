@@ -59,7 +59,7 @@ export class CreateNotesComponent implements OnInit {
 
   public setVAlue(event:any){
     
-    console.log(event.target.value);
+    // console.log(event.target.value);
     
     if (event.target.value == 'Alta-prioridad') {
 
@@ -103,7 +103,7 @@ export class CreateNotesComponent implements OnInit {
     if (this.id !== null ) {
       //EDIT NOTE
       this._noteService.editNote(this.id, NOTE).subscribe(data =>{
-        this.toastr.info('Nota editada con exito!', 'Nota editada', {timeOut: 900, positionClass: 'toast-bottom-right'}) 
+        this.toastr.info('Nota editada con exito!', 'Nota editada', {timeOut: 1000, positionClass: 'toast-bottom-right'}) 
         this.router.navigate(['/']);
       }, error =>{
         console.log(error);
@@ -113,9 +113,9 @@ export class CreateNotesComponent implements OnInit {
 
     }else{
       //ADD NOTE
-      console.log(NOTE); 
+      // console.log(NOTE); 
       this._noteService.addNote(NOTE).subscribe(data =>{
-        this.toastr.success('La nota se guardo con exito! ', 'Nota guardada!', {timeOut: 900, positionClass: 'toast-bottom-right'});
+        this.toastr.success('La nota se guardo con exito! ', 'Nota guardada!', {timeOut: 1000, positionClass: 'toast-bottom-right'});
         this.router.navigate(['/']);
     
       }, error =>{
@@ -135,7 +135,7 @@ export class CreateNotesComponent implements OnInit {
     if (this.id !== null) {
       this.title = 'Editar Nota';
       this._noteService.getNote(this.id).subscribe(data =>{
-        console.log(data);
+        // console.log(data);
         
         this.noteForm.setValue({
 

@@ -17,11 +17,16 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 export class ListNotesComponent implements OnInit {
   listNotes: Note[]= [];
   closeResult= '';
+  altaPrioridad: Note[] =[];
+  mediaPrioridad: Note[] =[];
+  bajaPrioridad: Note[] =[];
 
   constructor(private _noteService: NotesService, private toastr: ToastrService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.getNotesFilter();
     this.getNotes();
+  
   }
 
   searchValue: string = '';
@@ -66,17 +71,29 @@ export class ListNotesComponent implements OnInit {
   }
 
   getNotesFilter(){
-    this._noteService.getNotes('title', '1').subscribe(data =>{
+    this._noteService.getNotes('order', '1').subscribe(data =>{
     
+      this.listNotes = data;
       
-      // this.listNotes = data;
-     const altaPrioridad = this.listNotes.filter( function (e){
-          return e.order == 1;
+
+     this.altaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 1;
+        
+      });
+
+
+      this.mediaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 2;
+        
       })
 
-    }, error =>{
-      console.log(error);
+      this.bajaPrioridad = this.listNotes.filter(function(note){
+        return note.order == 3;
+        
+      })
       
+    }, error =>{
+      console.log(error);    
     })
   }
 
@@ -87,12 +104,15 @@ export class ListNotesComponent implements OnInit {
     
       
       this.listNotes = data;
+      console.log(data);
+      
 
     }, error =>{
       console.log(error);
       
     })
   }
+
   getNotesDate(){
     this._noteService.getNotes('date', '1').subscribe(data =>{
     
@@ -140,8 +160,8 @@ export class ListNotesComponent implements OnInit {
       if (result.isConfirmed) {
         this._noteService.deleteNote(id).subscribe(data =>{
 
-      // this.toastr.error('Nota eliminada con exito', 'Nota eliminada!', {timeOut: 900, positionClass: 'toast-bottom-right'});
-      this.getNotes();
+      // this.toastr.error('Nota eliminada con exito', 'Nota eliminada!', {timeOut: 1000, positionClass: 'toast-bottom-right'});
+      this.getNotesFilter();
     }, error =>{
       console.log(error);
       
@@ -152,9 +172,6 @@ export class ListNotesComponent implements OnInit {
   }
 
 
-  select(){
-    console.log("A de alfa");
-    
-  }
+
 }
 

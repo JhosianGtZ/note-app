@@ -5,6 +5,14 @@
   scroll-behavior: smooth;
 }
 /*Header Styles*/
+.fixed-header{
+  background-color: var(--bg);
+  position: fixed;
+  width: 100%;
+  margin: 0;
+  z-index: 1;
+  transition: all .5s ease-in-out;
+}
 
 .header {
   display: flex;
@@ -179,7 +187,7 @@
   margin-top: 1.5rem;
   flex-wrap: wrap;
   overflow: hidden;
-  
+  height: 100vh;
 
 }
 
@@ -190,6 +198,7 @@
   width: 100%;
   min-width: 30%;
   height: 350px;
+  margin-top: 1rem;
   transition: all .5s ease;
   -webkit-animation: scale-in-top .5s cubic-bezier(.25, .46, .45, .94) both;
   animation: scale-in-top .5s cubic-bezier(.25, .46, .45, .94) both
@@ -357,7 +366,30 @@
   display: none;
 }
 
+.notes-prioridad-container{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  grid-gap: 1.2rem;
+  width: 90%;
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
 
+}
+
+
+
+.notes-prioridad-container{
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+
+.alta-prioridad, .media-prioridad, .baja-prioridad{
+  margin-top: 14rem;
+}
 
 
 /* Responsive design*/
@@ -448,32 +480,3 @@
 
 }
 
-
-.notes-prioridad-container{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 1.2rem;
-  width: 90%;
-  margin: 0 auto;
-  overflow: hidden;
-  background-color: #ccc;
-}
-
-.alta-prioridad{
-  
-  height: 450px;
-  background-color: red;
-}
-
-.media-prioridad{
-  
-  height: 450px;
-  background-color: green;
-}
-
-.baja-prioridad{
-  
-  height: 450px;
-  background-color: yellow;
-}
